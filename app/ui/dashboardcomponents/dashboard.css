@@ -1,0 +1,22 @@
+
+.container{
+    display: flex;
+    /* background-color: red; */
+    width: 100%;
+    /* flex-direction: column; */
+}
+
+.sidebar-container{
+    /* flex: 1; */
+    background-color: var(--bgSoft);
+    /* background-color: purple; */
+    padding: 20px;
+    width: 20%;
+}
+
+.content{
+    /* flex: 4; */
+    padding: 20px;
+    width: 80%;
+    /* background-color: green; */
+}
