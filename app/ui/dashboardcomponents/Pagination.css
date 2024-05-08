@@ -1,0 +1,15 @@
+.pagination-container{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.paginationbtn{
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.paginationbtn:disabled{
+    cursor: not-allowed;
+}

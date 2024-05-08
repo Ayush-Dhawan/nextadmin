@@ -83,7 +83,7 @@ export default function Sidebar() {
         <div className="user">
             <Image className='userImage' src={"/noavatar.png"} alt='pfp' width={50} height={50} />
             <div className="userDetail">
-                <span className="username">John Doe</span>
+                <span className="username">Cute snake</span>
                 <span className="userTitle">Admin</span>
             </div>
         </div>
