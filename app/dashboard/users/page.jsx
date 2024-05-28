@@ -45,7 +45,7 @@ export default function page() {
             <td>active</td>
             <td>
               <div className="buttons">
-                  <Link href={'/'}>
+                  <Link href={'/dashboard/users/testId'}>
                     <button className={`${"button"} ${"view"}`}>View</button>
                   </Link>
                   <Link href={'/'}>
