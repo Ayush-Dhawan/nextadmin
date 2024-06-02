@@ -8,8 +8,9 @@ import { getAllUsers } from '@/app/lib/data'
 
 export default async function page({ searchParams }) {
   const query = searchParams?.q || "";
-  const users = await getAllUsers(query);
-  console.log(users);
+  const page = searchParams?.page || 1;
+  const {users, count} = await getAllUsers(query, page);
+
   return (
     <div className='users-container'>
       <div className="top">
@@ -62,7 +63,7 @@ export default async function page({ searchParams }) {
           ))}
         </tbody>
       </table>
-        <Pagination />  
+        <Pagination count={count} />  
     </div>
   )
 }
