@@ -4,8 +4,12 @@ import Search from '@/app/ui/dashboardcomponents/Search'
 import Link from 'next/link'
 import Image from 'next/image'
 import Pagination from '@/app/ui/dashboardcomponents/Pagination'
+import { getAllUsers } from '@/app/lib/data'
 
-export default function page() {
+export default async function page({ searchParams }) {
+  const query = searchParams?.q || "";
+  const users = await getAllUsers(query);
+  console.log(users);
   return (
     <div className='users-container'>
       <div className="top">
@@ -26,26 +30,27 @@ export default function page() {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          {users?.map(user => (
+            <tr>
             <td>
               <div className="user">
                 <Image
-                  src={'/noavatar.png'}
+                  src={user.img}
                   alt=''
                   height={40}
                   width={40}
                   className='user-image'
                    />
-                   Test user
+                   {user.username}
               </div>
             </td>
-            <td>test@user.com</td>
-            <td>13.01.2023</td>
-            <td>Admin</td>
-            <td>active</td>
+            <td>{user.email}</td>
+            <td>{user.createdAt?.toString().slice(4, 16)}</td>
+            <td>{user.isAdmin ? "Admin" : "Client"}</td>
+            <td>{user.isActive ? "active" : "passive"}</td>
             <td>
               <div className="buttons">
-                  <Link href={'/dashboard/users/testId'}>
+                  <Link href={`/dashboard/users/${user._id}`}>
                     <button className={`${"button"} ${"view"}`}>View</button>
                   </Link>
                   <Link href={'/'}>
@@ -54,6 +59,7 @@ export default function page() {
               </div>
             </td>
           </tr>
+          ))}
         </tbody>
       </table>
         <Pagination />  
