@@ -1,10 +1,11 @@
 import React from 'react'
 import './add.css'
+import { addProduct } from '@/app/lib/actions'
 
 export default function page() {
   return (
     <div className="add-product-container">
-    <form  className="form">
+    <form action={addProduct}  className="form">
       <input type="text" placeholder="title" name="title" required />
       <select name="cat" id="cat">
         <option value="general">Choose a Category</option>

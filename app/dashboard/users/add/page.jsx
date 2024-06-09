@@ -1,10 +1,11 @@
 import React from 'react'
 import './add.css'
+import { addUser } from '@/app/lib/actions'
 
 export default function page() {
   return (
     <div className={"add-user-container"}>
-      <form className="form">
+      <form action={addUser} className="form">
         <input type="text" placeholder="username" name="username" required />
         <input type="email" placeholder="email" name="email" required />
         <input
