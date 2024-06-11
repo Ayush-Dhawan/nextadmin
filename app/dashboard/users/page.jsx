@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Pagination from '@/app/ui/dashboardcomponents/Pagination'
 import { getAllUsers } from '@/app/lib/data'
+import { deleteUser } from '@/app/lib/actions'
 
 export default async function page({ searchParams }) {
   const query = searchParams?.q || "";
@@ -54,9 +55,9 @@ export default async function page({ searchParams }) {
                   <Link href={`/dashboard/users/${user._id}`}>
                     <button className={`${"button"} ${"view"}`}>View</button>
                   </Link>
-                  <Link href={'/'}>
+                  <form action={deleteUser}>
                     <button className={`${"button"} ${"del"}`}>Delete</button>
-                  </Link>
+                  </form>
               </div>
             </td>
           </tr>

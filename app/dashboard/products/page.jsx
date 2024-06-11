@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Pagination from '@/app/ui/dashboardcomponents/Pagination'
 import { getAllProducts } from '@/app/lib/data'
+import { deleteProduct } from '@/app/lib/actions'
 // import {searchParams} from 'next/navigation'
 
 export default async function page({searchParams}) {
@@ -56,9 +57,10 @@ export default async function page({searchParams}) {
                  <Link href={`/dashboard/products/${product.id}`}>
                    <button className={`${"button"} ${"view"}`}>View</button>
                  </Link>
-                 <Link href={'/'}>
-                   <button className={`${"button"} ${"del"}`}>Delete</button>
-                 </Link>
+                   <form action={deleteProduct}>
+                      <input type="hidden" name='id' value={product.id} />
+                      <button className={`${"button"} ${"del"}`}>Delete</button>
+                   </form>
              </div>
            </td>
          </tr>
